@@ -4,11 +4,13 @@ import csv
 import RPi.GPIO as GPIO
 from time import sleep
 GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
 servoPIN = 11
 GPIO.setup(servoPIN, GPIO.OUT)
 pwm=GPIO.PWM(servoPIN, 50)
 pwm.start(0)
 
+print("start") 
   
 # csv file name 
 filename = "~/shared/bioswimmer_file.txt"
@@ -36,6 +38,7 @@ angle =
   GPIO.output(servoPIN,False)
   pwm.ChangeDutyCycle(0)
 
+print ("stop")
 pwm.stop()
 GPIO.cleanup()
 
