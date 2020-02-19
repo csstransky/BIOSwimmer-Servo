@@ -11,7 +11,7 @@ pwm.start(0)
 
   
 # csv file name 
-filename = "aapl.csv"
+filename = "~/shared/bioswimmer_file.txt"
   
 # initializing the titles and rows list 
 fields = [] 
@@ -28,14 +28,14 @@ with open(filename, 'r') as csvfile:
     # extracting each data row one by one 
     for row in csvreader: 
         rows.append(row) 
-def SetAngle(angle):
+angle = 
   duty = angle/18+2
   GPIO.output(servoPIN,True)
   pwm.ChangeDutyCycle(duty)
   sleep(1)
   GPIO.output(servoPIN,False)
   pwm.ChangeDutyCycle(0)
-SetAngle(90)
+
 pwm.stop()
 GPIO.cleanup()
 
