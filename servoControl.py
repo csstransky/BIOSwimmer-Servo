@@ -12,31 +12,30 @@ pwm.start(0)
 
 print("start") 
   
-# csv file name 
-filename = "~/shared/bioswimmer_file.txt"
-  
 # initializing the titles and rows list 
-fields = [] 
-rows = [] 
-  
+fields = []  
+rows = []
 # reading csv file 
-with open(filename, 'r') as csvfile: 
+with open('/home/pi/shared/bioswimmer_file.txt', "r") as csv_file: 
     # creating a csv reader object 
-    csvreader = csv.reader(csvfile) 
+    csv_reader = csv.reader(csv_file) 
       
     # extracting field names through first row 
-    fields = csvreader.next() 
-  
+    fields = csv_reader.next() 
+    
     # extracting each data row one by one 
-    for row in csvreader: 
+    for row in csv_reader: 
         rows.append(row) 
-angle = 
-  duty = angle/18+2
-  GPIO.output(servoPIN,True)
-  pwm.ChangeDutyCycle(duty)
-  sleep(1)
-  GPIO.output(servoPIN,False)
-  pwm.ChangeDutyCycle(0)
+
+    print (fields)
+
+angle = 180
+duty = angle/18+2
+GPIO.output(servoPIN,True)
+pwm.ChangeDutyCycle(duty)
+sleep(1)
+GPIO.output(servoPIN,False)
+pwm.ChangeDutyCycle(0)
 
 print ("stop")
 pwm.stop()
