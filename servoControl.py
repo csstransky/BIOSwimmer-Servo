@@ -29,15 +29,16 @@ with open('/home/pi/shared/bioswimmer_file.txt', "r") as csv_file:
 
     print (fields)
 
-angle = 180
-duty = angle/18+2
+angle = 0
+duty = 12.5
+print ("duty = ")
+print(duty)
 GPIO.output(servoPIN,True)
-pwm.ChangeDutyCycle(duty)
+pwm.ChangeDutyCycle(2)
 sleep(1)
 GPIO.output(servoPIN,False)
 pwm.ChangeDutyCycle(0)
 
-print ("stop")
 pwm.stop()
 GPIO.cleanup()
 
