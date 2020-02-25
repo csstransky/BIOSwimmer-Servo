@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # importing csv module 
 import csv 
+import math
 import RPi.GPIO as GPIO
 from time import sleep
 GPIO.setmode(GPIO.BOARD)
@@ -27,15 +28,19 @@ with open('/home/pi/shared/bioswimmer_file.txt', "r") as csv_file:
     for row in csv_reader: 
         rows.append(row) 
 
-    print (fields)
+print (fields)
 
-import math 
-x1 = 37.23
-y1 = 49.23
-angcom = 103.9
-x2 = 37.46
-y2 = 49.54
+x1 = float (fields[0])
+y1 = float (fields[1])
+angcom = float (fields[2])
+x2 = float (fields[3])
+y2 = float (fields[4])
 
+print (x1)
+print (x2)
+print (angcom)
+print (y1)
+print (y2)
 dx = x1-x2
 dy = y1-y2
 
@@ -46,7 +51,7 @@ print (distance)
 ang = math.atan(dx/dy)/(math.pi)*180
 print (ang)
 
-if dx == 0:f
+if dx == 0:
     ang = 0
 elif dx < 0 and dy< 0:
     ang =-180+ang
@@ -59,17 +64,16 @@ print (ang)
 moveAng = ang - angcom
 print (moveAng)
 if moveAng <0:
-    moveAng = 360 + fmoveAng
+    moveAng = 360 + moveAng
 else:
     moveAng = moveAng
 print (moveAng)
-angle = 90
-duty =angle/180
-print ("duty = ")
-print(duty)
+angle = float (moveAng)
+duty = float(angle/180)
+print (duty)
 GPIO.output(servoPIN,True)
 pwm.ChangeDutyCycle(12.5)
-sleep(0.865/4)
+sleep(0.865*(duty))
 
 
 pwm.stop()

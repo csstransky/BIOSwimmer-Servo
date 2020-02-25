@@ -18,7 +18,7 @@ print (distance)
 ang = math.atan(dx/dy)/(math.pi)*180
 print (ang)
 
-if dx == 0:f
+if dx == 0:
     ang = 0
 elif dx < 0 and dy< 0:
     ang =-180+ang
@@ -31,7 +31,8 @@ print (ang)
 moveAng = ang - angcom
 print (moveAng)
 if moveAng <0:
-    moveAng = 360 + fmoveAng
+    moveAng = 360 + moveAng
 else:
     moveAng = moveAng
-print (moveAng)
+
+    print (moveAng)
