@@ -15,14 +15,23 @@ distance = math.sqrt((dx*dx)+(dy*dy))
 print (dx)
 print (dy)
 print (distance)
-ang = math.asin(dy / distance)/(math.pi)*180
+ang = math.atan(dx/dy)/(math.pi)*180
 print (ang)
 
-if x1>0 and y1>0
-    ang = ang 
-else if x1 >0 and y1<0
-    ang = 180+ang
-else if x1<0 and y1<0
+if dx == 0:f
+    ang = 0
+elif dx < 0 and dy< 0:
+    ang =-180+ang
+elif dx < 0 and dy >  0: 
     ang = 180-ang
-else if x1 <0 and y1 > 0 
-    ang = 360+ang
+else: 
+    ang = ang
+print (ang)
+
+moveAng = ang - angcom
+print (moveAng)
+if moveAng <0:
+    moveAng = 360 + fmoveAng
+else:
+    moveAng = moveAng
+print (moveAng)

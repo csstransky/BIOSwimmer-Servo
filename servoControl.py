@@ -29,15 +29,48 @@ with open('/home/pi/shared/bioswimmer_file.txt', "r") as csv_file:
 
     print (fields)
 
-angle = 0
-duty = 12.5
+import math 
+x1 = 37.23
+y1 = 49.23
+angcom = 103.9
+x2 = 37.46
+y2 = 49.54
+
+dx = x1-x2
+dy = y1-y2
+
+distance = math.sqrt((dx*dx)+(dy*dy))
+print (dx)
+print (dy)
+print (distance)
+ang = math.atan(dx/dy)/(math.pi)*180
+print (ang)
+
+if dx == 0:f
+    ang = 0
+elif dx < 0 and dy< 0:
+    ang =-180+ang
+elif dx < 0 and dy >  0: 
+    ang = 180-ang
+else: 
+    ang = ang
+print (ang)
+
+moveAng = ang - angcom
+print (moveAng)
+if moveAng <0:
+    moveAng = 360 + fmoveAng
+else:
+    moveAng = moveAng
+print (moveAng)
+angle = 90
+duty =angle/180
 print ("duty = ")
 print(duty)
 GPIO.output(servoPIN,True)
-pwm.ChangeDutyCycle(2)
-sleep(1)
-GPIO.output(servoPIN,False)
-pwm.ChangeDutyCycle(0)
+pwm.ChangeDutyCycle(12.5)
+sleep(0.865/4)
+
 
 pwm.stop()
 GPIO.cleanup()
